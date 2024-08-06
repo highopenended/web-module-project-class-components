@@ -8,8 +8,13 @@ export default class Form extends React.Component {
   render() {
     return (
       <div>
-        <input id='inputField' /><button>Submit</button>
-        <div><button>Hide Completed</button></div>
+        <input onChange={this.props.handlerInputChange}/>
+        <button onClick={this.props.handlerSubmitClick}>
+            Submit
+        </button>
+        <div>
+          <button>Hide Completed</button>
+        </div>
       </div>
     )
   }

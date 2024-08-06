@@ -4,17 +4,17 @@ import ToDo from './Todo'
 export default class TodoList extends React.Component {
   constructor(props){
     super(props)
-    this.state={
-      toDosArr:[]
-    }
   }
+
   render() {
     return (
-      <div>
+      <ol>
         {
-          this.state.toDosArr.map((val,key)=>{return <p key={key}>{val}</p> })
+          this.props.toDoArr.map((val,key)=>{
+            return <li key={key}>{val}</li> 
+          })
         }
-      </div>
+      </ol>
     )
   }
 }
