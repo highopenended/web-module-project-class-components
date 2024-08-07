@@ -1,7 +1,6 @@
 import React from 'react'
 
 export default class Form extends React.Component {  
-
   render() {
     const {onKeyPress, onChange, onSubmit, toggleHide, inputValue}=this.props
     return (
