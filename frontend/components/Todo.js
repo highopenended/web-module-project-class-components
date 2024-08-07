@@ -4,10 +4,10 @@ export default class Todo extends React.Component {
 
   render() {
     const {id, name, completed}=this.props.todo
-    const {toggleCompletion}=this.props
+    const {toggleCompletion, hideCompleted}=this.props
     return (
       <div onClick={()=>toggleCompletion(id)}>
-        {name}{completed && '✔'}
+        {(hideCompleted && completed) ? "":name + (completed?'✔':'')}
       </div>
     )
   }

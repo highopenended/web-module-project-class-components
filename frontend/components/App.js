@@ -1,7 +1,6 @@
 import React from 'react'
 
 import Todolist from './TodoList'
-import Todo from './Todo'
 import Form from './Form'
 
 let id=0
@@ -19,7 +18,8 @@ export default class App extends React.Component {
     super(props)
     this.state={
       todos:initialTodos,
-      inputValue:''
+      inputValue:'',
+      hideCompleted:false
     }
   }
 
@@ -42,31 +42,50 @@ export default class App extends React.Component {
     })
   }
 
-  onChange= e =>{
+  onKeyPress = (e) =>{
+    if(e.key=='Enter'){this.onSubmit(e)}    
+  }
+
+  onChange = e =>{
     const {value}=e.target
-    console.log(value)
     this.setState({
       inputValue:value
     })
   }
 
-  onSubmit= val =>{
+  onSubmit = () =>{
     this.addTodo(this.state.inputValue)
-    
+    this.setState({inputValue:''})
   }
 
+  toggleHide=()=>{
+    // console.log("Hide Completed")
+    let newHide=!this.state.hideCompleted
+
+    console.log(this.state.hideCompleted)
+    console.log(newHide)
+
+    this.setState({hideCompleted:newHide})
+  }
 
   render() {
     return (
       <div>        
         <h1>Todos:</h1>
-        <Todolist todos={this.state.todos} toggleCompletion={this.toggleCompletion}/>
+        <Todolist 
+          todos={this.state.todos}
+          hideCompleted={this.state.hideCompleted}
+          toggleCompletion={this.toggleCompletion}
+        />
+        <br></br>
+
         <Form 
+          onKeyPress={this.onKeyPress}
           onChange={this.onChange}
           onSubmit={this.onSubmit}
+          toggleHide={this.toggleHide}
           inputValue={this.state.inputValue}
-          >
-        </Form>
+          ></Form>
       </div>
     )
   }
