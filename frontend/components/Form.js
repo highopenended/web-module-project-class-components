@@ -1,26 +1,24 @@
 import React from 'react'
 
 export default class Form extends React.Component {  
-  constructor(props){
-    super(props)
+  constructor(){
+    super()
+    this.state={
+      name:''
+    }
   }
-
   render() {
+    const {onChange, onSubmit, inputValue}=this.props
     return (
       <div>
-        <input 
-          // onChange={this.props.handlerInputChange}
-          onChange={this.props.handlerInputChange}
-          value={this.props.inputVal}
-          onKeyDown={this.props.handlerInputEnter}
-        />
-        <button onClick={this.props.handlerSubmitClick} >
-            Submit
-        </button>
-        <div>
-          <button>Hide Completed</button>
-        </div>
+        <input type='text' value={inputValue} onChange={onChange} />
+        <button onClick={()=>onSubmit("test")}>Submit</button>
       </div>
     )
   }
 }
+
+
+{/* <div>
+<button>Hide Completed</button>
+</div> */}
