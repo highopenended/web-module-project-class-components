@@ -1,20 +1,20 @@
 import React from 'react'
 
-
-
-
 export default class Todo extends React.Component {
   constructor(props){
     super(props)
     this.state={
-      toDoVal:props.toDoVal
+      isChecked:false,
+      inputVal:props.inputVal,
+      uniqueID:props.uniqueID
     }
   }
   
+
   render() {
     return (
-      <div>
-        {this.state.toDoVal}
+      <div onClick={(e)=>this.props.handlerToDoClick(e,this.state.uniqueID)}>
+        {this.state.inputVal}
       </div>
     )
   }
